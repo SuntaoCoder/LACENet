@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lacenet"
+version = "0.1.0"
+description = "Lattice-aware crystal structure relaxation with joint atom-lattice interaction"
+readme = "README.md"
+requires-python = ">=3.9,<3.13"
+dependencies = [
+    "torch>=1.12",
+    "torch-geometric",
+    "e3nn",
+    "lmdb",
+    "numpy",
+    "scipy",
+    "ase",
+    "tqdm",
+]
+
+[project.optional-dependencies]
+train = ["wandb", "tqdm"]
+test = ["pymatgen", "pandas", "tqdm"]
+preprocess = ["pymatgen", "pandas"]
+dev = ["wandb", "pymatgen", "pandas", "tqdm"]
+
+[tool.setuptools.packages.find]
+include = ["model*", "utils*", "train*", "test*", "preprocess*"]
